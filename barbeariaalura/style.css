@@ -168,6 +168,18 @@ td, th {
     clear: left;
 }
 
+.titulo-principal::first-letter {
+    font-weight: bold;
+}
+
+.titulo-principal::before {
+    content: "[ ";
+}
+
+.titulo-principal::after {
+    content: " ]";
+}
+
 .principal {
     padding: 3em 0;
     background: #FEFEFE;
@@ -226,6 +238,10 @@ td, th {
 
 .itens {
     line-height: 1.5;
+}
+
+.itens::before{
+    content: "\2605";
 }
 
 .itens:first-child {
