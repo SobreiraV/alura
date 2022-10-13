@@ -1,1 +1,0 @@
-# Atividades práticadas na Alura
