@@ -1,0 +1,21 @@
+.banner__imagem {
+    background: url('/arquitetura-css/assets/img/banner.jpg') no-repeat center / cover;
+    /*height: calc(100vh - 72px);*/
+    width: 100%;
+    /*background-image: url(/arquitetura-css/assets/img/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;*/
+}
+
+@media screen and (min-width: 0px) {
+    .banner__imagem {
+        height: calc(100vh - 51px);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .banner__imagem {
+        height: calc(100vh - 72px);
+    }
+}
