@@ -16,14 +16,29 @@ form.addEventListener("submit", (evento) => {
     const nome = evento.target['nome']
     const quantidade = evento.target['quantidade']
 
+    const existe = itens.find( elemento => elemento.nome ===nome.value )
+//descobrir se o elemento existe e tomar uma ação
+    
     const itemAtual = {
         "nome": nome.value,
         "quantidade": quantidade.value
     }
 
-    criaElemento(itemAtual)
+    if (existe) {
+        itemAtual.id = existe.id
+
+        atualizaElemento(itemAtual)
+
+        itens[existe.id] = itemAtual
+    } else {
+        itemAtual.id = itens.length
+
+        criaElemento(itemAtual)
 
     itens.push(itemAtual) //colocar no array declarado na linha 3
+    }
+
+    
 
     localStorage.setItem("itens", JSON.stringify(itens))
 
@@ -43,11 +58,17 @@ function criaElemento(item) {
 
     const numeroItem = document.createElement('strong')
     numeroItem.innerHTML = item.quantidade
-    
+    numeroItem.dataset.id = item.id //adicionando id ao ele
     novoItem.appendChild(numeroItem)
+    
     novoItem.innerHTML += item.nome
 
     lista.appendChild(novoItem)
+}
+
+function atualizaElemento(item) {
+    document.querySelector("[data-id='"+item.id+"']")
+}
 
     /*const itemAtual = {
         "nome": nome,
@@ -62,5 +83,5 @@ function criaElemento(item) {
 
     // essa armazena mas é sobrescrito, acima colocamos essas duas strings dentro de um só objeto
     localStorage.setItem("nome", nome) //armazena no local storage
-    localStorage.setItem("quantidade", quantidade) */
-}
+    localStorage.setItem("quantidade", quantidade) 
+}*/
