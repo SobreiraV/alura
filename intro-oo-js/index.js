@@ -9,3 +9,6 @@ const novoAdmin = new Admin('Pedro', 'p@p.com', '2021-01-01')
 console.log(novoAdmin.nome)
 novoAdmin.nome = 'Pedro Silva'
 console.log(novoAdmin.nome)
+
+const novoDocente = new Docente('João', 'j@j.com', '2021-01-01')
+console.log(novoDocente.exibirInfos())
