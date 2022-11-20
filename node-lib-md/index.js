@@ -7,7 +7,7 @@ function extraiLinks(texto) {
     const capturas = [...texto.matchAll(regex)]; // retorna um iteravel com todos resultados
                     //colocamos entre colchetes e utilizamos o spread para transformar em array
     const resultados = capturas.map(captura => ({[captura[1]]: captura[2]})); //o objeto tem que estar entre parenteses e os idices entre colchetes para o javascript entender corretamente
-    return resultados;
+    return resultados.length !== 0 ? resultados : 'Não há links no arquivo';
     //const capturas = regex.exec(texto); //traz separado por grupos, mas por padrão trás só o primeiro resultado
     //const capturas = texto.match(regex); //traz a sring completa sem separar os grupos
     /* console.log(capturas);
@@ -27,8 +27,7 @@ async function pegaArquivo(caminhoDoArquivo) {
     try {
         const encoding = 'utf-8';
         const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
-        //extraiLinks(texto);
-        console.log(extraiLinks(texto));
+        return extraiLinks(texto);
     } catch (erro) {
         trataErro(erro)
     }
@@ -54,6 +53,8 @@ function pegaArquivo(caminhoDoArquivo) {
     })
 } */
 
-pegaArquivo('./arquivos/texto.md');
+//pegaArquivo('./arquivos/texto.md');  //ao inves de fazer o hardcode, vamos passar o caminho pelo terminal no cli.js
 
 //\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)
+
+export default pegaArquivo;
