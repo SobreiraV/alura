@@ -59,6 +59,29 @@ class LivroController {
             }
         })
     }
+
+    // static listarLivroPorEditora = (req, res) => {
+    //     const editora = req.query.editora;
+
+    //     livros.find({'editora': editora}, {}, (err, livros) => {
+    //         res.status(200).send(livros);
+
+    //     })
+    // }
+
+    static listarLivroPorEditora(req, res) {
+        const editora = req.query.editora;
+
+        livros.find({ editora: { $regex: new RegExp(editora, "i") } }, (err, livro) => {
+            if (err) {
+                return res.status(500).send(err)
+            } else if (!livro) {
+                return res.status(404).send('Livro não encontrado')
+            } else {
+            return res.status(200).send(livro)
+            }
+        })
+    }
 }
 
 export default LivroController
