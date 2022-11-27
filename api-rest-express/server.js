@@ -1,5 +1,20 @@
-const http = require("http");
+import app from './src/app.js';
+
+//como as vezes não vamos usar servidor local, vamos pegar portas comuns em outros servidores
+const port = process.env.PORT || 3000;  //env -> enviroment
+
+
+app.listen(port, () => {
+    console.log(`Servidor escutando em http://localhost:${port}`);
+})
+
+//o server só escuta e atende as requisições, o app.js é o que faz o processamento
+
+
+
+/* const http = require("http");
 const port = 3000; //3000, 4000, 8080 são portas usadas comumente em servidor local
+
 
 const rotas = {
     '/': 'Curso de Node',
@@ -16,4 +31,4 @@ const server = http.createServer((req, res) => {
 
 server.listen(port, () => {
     console.log(`Servidor escutando em http://localhost:${port}`);
-})
+})*/
